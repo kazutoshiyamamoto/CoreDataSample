@@ -34,10 +34,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data stack
 
+    // CoreDataを初期化
+    // Lazy Stored Propertyによって使用されるまで初期化を遅らせている
     lazy var persistentContainer: NSPersistentContainer = {
+        // Data Modelファイル名をイニシャライザに渡してコンテナをインスタンス化する
         let container = NSPersistentContainer(name: "CoreDataSample")
+        // StoreCoordinatorを読み込む
+        // 存在しない場合はStoreを作成する
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
+                // 書き込み許可されていない場合、Storeにアクセスできない、デバイスの容量不足などの際にエラーになる
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
