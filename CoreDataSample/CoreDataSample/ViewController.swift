@@ -9,6 +9,9 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController {
+    
+    // 永続コンテナへの参照を保持する変数
+    var container: NSPersistentContainer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
