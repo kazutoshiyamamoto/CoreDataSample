@@ -20,7 +20,5 @@ class ViewController: UIViewController {
             fatalError("This view needs a persistent container.")
         }
     }
-    
-    
 }
 
