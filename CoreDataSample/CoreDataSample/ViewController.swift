@@ -20,5 +20,26 @@ class ViewController: UIViewController {
             fatalError("This view needs a persistent container.")
         }
     }
+    
+    
+    @IBAction func insertImageData(_ sender: Any) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let entity = NSEntityDescription.entity(forEntityName: "Image", in: managedContext)!
+        
+        let image = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        image.setValue(1, forKey: "id")
+        image.setValue("http://...", forKey: "imageURL")
+        image.setValue(5, forKey: "likes")
+        image.setValue("sea", forKey: "tag")
+        
+        appDelegate.saveContext()
+    }
+    
 }
 
