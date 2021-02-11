@@ -13,6 +13,11 @@ class ViewController: UIViewController {
     // 永続コンテナへの参照を保持する変数
     var container: NSPersistentContainer!
     
+    @IBOutlet weak var imageIdText: UILabel!
+    @IBOutlet weak var imageURLText: UILabel!
+    @IBOutlet weak var imageTagText: UILabel!
+    @IBOutlet weak var imageLikesText: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // 永続コンテナのnilチェック
@@ -41,5 +46,7 @@ class ViewController: UIViewController {
         appDelegate.saveContext()
     }
     
+    @IBAction func fetchImageData(_ sender: Any) {
+    }
 }
 
