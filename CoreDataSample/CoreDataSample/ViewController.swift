@@ -58,6 +58,10 @@ class ViewController: UIViewController {
         
         do {
             imageData = try managedContext.fetch(fetchRequest)
+            imageIdText.text = "id:\(String(describing: imageData[0].value(forKey: "id")!))"
+            imageURLText.text = "id:\(String(describing: imageData[0].value(forKey: "imageURL")!))"
+            imageTagText.text = "id:\(String(describing: imageData[0].value(forKey: "tag")!))"
+            imageLikesText.text = "id:\(String(describing: imageData[0].value(forKey: "likes")!))"
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
