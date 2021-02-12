@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     // 永続コンテナへの参照を保持する変数
     var container: NSPersistentContainer!
     
+    // 取得した画像情報を保持する配列
     var imageData: [NSManagedObject] = []
     
     // 保存した画像情報を表示するラベル
@@ -36,9 +37,7 @@ class ViewController: UIViewController {
         }
         
         let managedContext = appDelegate.persistentContainer.viewContext
-        
         let entity = NSEntityDescription.entity(forEntityName: "Image", in: managedContext)!
-        
         let image = NSManagedObject(entity: entity, insertInto: managedContext)
         
         // 登録する画像情報
@@ -57,7 +56,6 @@ class ViewController: UIViewController {
         }
         
         let managedContext = appDelegate.persistentContainer.viewContext
-        
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Image")
         
         do {
