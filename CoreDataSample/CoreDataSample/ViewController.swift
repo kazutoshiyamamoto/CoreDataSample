@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     
     var imageData: [NSManagedObject] = []
     
+    // 保存した画像情報を表示するラベル
     @IBOutlet weak var imageIdText: UILabel!
     @IBOutlet weak var imageURLText: UILabel!
     @IBOutlet weak var imageTagText: UILabel!
@@ -28,6 +29,7 @@ class ViewController: UIViewController {
         }
     }
     
+    // 画像情報を登録
     @IBAction func insertImageData(_ sender: Any) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -39,6 +41,7 @@ class ViewController: UIViewController {
         
         let image = NSManagedObject(entity: entity, insertInto: managedContext)
         
+        // 登録する画像情報
         image.setValue(1, forKey: "id")
         image.setValue("http://...", forKey: "imageURL")
         image.setValue("sea", forKey: "tag")
@@ -47,6 +50,7 @@ class ViewController: UIViewController {
         appDelegate.saveContext()
     }
     
+    // 保存した画像情報を画面に表示
     @IBAction func fetchImageData(_ sender: Any) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -57,7 +61,9 @@ class ViewController: UIViewController {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Image")
         
         do {
+            // 保存した画像情報を取得
             imageData = try managedContext.fetch(fetchRequest)
+            
             imageIdText.text = "id:\(String(describing: imageData[0].value(forKey: "id")!))"
             imageURLText.text = "id:\(String(describing: imageData[0].value(forKey: "imageURL")!))"
             imageTagText.text = "id:\(String(describing: imageData[0].value(forKey: "tag")!))"
